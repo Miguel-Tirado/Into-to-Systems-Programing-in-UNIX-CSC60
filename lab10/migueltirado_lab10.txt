@@ -1,0 +1,103 @@
+Script started on Mon 07 May 2018 07:18:47 PM PDT
+[tiradom@sp1:13]> gcc lavb[K[Kb10.c
+[tiradom@sp1:14]> a.out
+csc60mshell> ls > lsout
+Argc = 3
+Argv 0 = ls
+Argv 1 = >
+Argv 2 = lsout
+Child returned status: 0
+csc60mshell> cat lsout
+Argc = 2
+Argv 0 = cat
+Argv 1 = lsout
+a.out
+execvp.c
+lab10.c
+lsout
+migueltirado_lab10.txt
+redir.c
+waitpid.c
+Child returned status: 0
+csc60mshell> ls > lsout > file1
+Argc = 5
+Argv 0 = ls
+Argv 1 = >
+Argv 2 = lsout
+Argv 3 = >
+Argv 4 = file1
+Cannot output to more than one file.Child returned status: 256
+csc60mshell> cat foo.txt
+Argc = 2
+Argv 0 = cat
+Argv 1 = foo.txt
+cat: foo.txt: No such file or directory
+Child returned status: 256
+csc60mshell> > lsout
+Argc = 2
+Argv 0 = >
+Argv 1 = lsout
+No command entered.Child returned status: 256
+csc60mshell> < lsout
+Argc = 2
+Argv 0 = <
+Argv 1 = lsout
+No command entered.Child returned status: 256
+csc60mshell> wc < lsout
+Argc = 3
+Argv 0 = wc
+Argv 1 = <
+Argv 2 = lsout
+ 7  7 70
+Child returned status: 0
+csc60mshell> wc < lsouu t > wcout
+Argc = 5
+Argv 0 = wc
+Argv 1 = <
+Argv 2 = lsout
+Argv 3 = >
+Argv 4 = wcout
+Child returned status: 0
+csc60mshell> cat wcout
+Argc = 2
+Argv 0 = cat
+Argv 1 = wcout
+ 7  7 70
+Child returned status: 0
+csc60mshell> wc < lsout < wcout
+Argc = 5
+Argv 0 = wc
+Argv 1 = <
+Argv 2 = lsout
+Argv 3 = <
+Argv 4 = wcout
+Cannot input from more than one file.Child returned status: 256
+csc60mshell> cd ../lab1
+Argc = 2
+Argv 0 = cd
+Argv 1 = ../lab1
+csc60mshell> gcc lab1.c
+Argc = 2
+Argv 0 = gcc
+Argv 1 = lab1.c
+Child returned status: 0
+csc60mshell> a.oui t
+Argc = 1
+Argv 0 = a.out
+
+Lab1
+
+Hello World
+Hi,Miguel Tirado 
+
+Every artist was first an amateur.
+-Ralph Waldo Emerson
+
+Child returned status: 0
+csc60mshell> exit
+Argc = 1
+Argv 0 = exit
+[tiradom@sp1:15]> exit
+exit
+
+Script done on Mon 07 May 2018 07:22:45 PM PDT

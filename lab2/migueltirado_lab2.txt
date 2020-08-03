@@ -1,0 +1,482 @@
+Script started on Mon 12 Feb 2018 05:25:17 PM PST
+[tiradom@sp1:21]> history -c
+[tiradom@sp1:22]> cd csc60
+[tiradom@sp1:23]> mkdir lab2
+[tiradom@sp1:24]> cd lab2
+[tiradom@sp1:25]> pwd
+/gaia/class/student/tiradom/csc60/lab2
+[tiradom@sp1:26]> mkdir syz[K[K[Kxyz
+[tiradom@sp1:27]> cd xyz
+[tiradom@sp1:28]> pwd
+/gaia/class/student/tiradom/csc60/lab2/xyz
+[tiradom@sp1:29]> cd ..
+[tiradom@sp1:30]> pwd
+/gaia/class/student/tiradom/csc60/lab2
+[tiradom@sp1:31]> ls > file1
+[tiradom@sp1:32]> cat file1
+file1
+xyz/
+[tiradom@sp1:33]> less file1
+[?1049h[?1h=file1
+xyz/
+[7mfile1 (END) [27m[K[K[?1l>[?1049l[tiradom@sp1:34]> file *
+file1: ASCII text
+xyz:   setgid directory
+[tiradom@sp1:35]> wc file1
+ 2  2 11 file1
+[tiradom@sp1:36]> wc *
+      2       2      11 file1
+wc: xyz: Is a directory
+      0       0       0 xyz
+      2       2      11 total
+[tiradom@sp1:37]> grep lab file1
+[tiradom@sp1:38]> cp file1 file2
+[tiradom@sp1:39]> ls
+file1  file2  xyz/
+[tiradom@sp1:40]> cd xyz
+[tiradom@sp1:41]> cp ../file1
+cp: missing destination file operand after `../file1'
+Try `cp --help' for more information.
+[tiradom@sp1:42]> cp ../file1 .
+[tiradom@sp1:43]> ls
+file1
+[tiradom@sp1:44]> mv file1 file2
+[tiradom@sp1:45]> ls
+file2
+[tiradom@sp1:46]> mv ../file1 .
+[tiradom@sp1:47]> cd ..
+[tiradom@sp1:48]> ls
+file2  xyz/
+[tiradom@sp1:49]> cd xyz
+[tiradom@sp1:50]> ls
+file1  file2
+[tiradom@sp1:51]> cmp file1 file2
+[tiradom@sp1:52]> ls > xyzlist
+[tiradom@sp1:53]> cmp file1 xyzlist
+file1 xyzlist differ: byte 7, line 2
+[tiradom@sp1:54]> diff file1 xyzlist
+2c2,3
+< xyz/
+---
+> file2
+> xyzlist
+[tiradom@sp1:55]> rm file1
+[tiradom@sp1:56]> ls
+file2  xyzlist
+[tiradom@sp1:57]> ps -u
+Warning: bad syntax, perhaps a bogus '-'? See /usr/share/doc/procps-3.2.8/FAQ
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+tiradom   9803  0.0  0.0 116752  2036 pts/0    Ss   17:22   0:00 -csh
+tiradom   9892  0.0  0.0 107132   828 pts/0    S+   17:25   0:00 script migueltirado_lab2.txt
+tiradom   9894  0.0  0.0 107644   404 pts/0    S+   17:25   0:00 script migueltirado_lab2.txt
+tiradom   9895  0.0  0.0 110380  1796 pts/2    Ss   17:25   0:00 -sh -i
+tiradom  10352  0.0  0.0 114488  1300 pts/2    R+   17:39   0:00 ps -u
+[tiradom@sp1:58]> ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1628  9895  9894  0  80   0 - 27595 sys_rt pts/2    00:00:00 csh
+0 R  1628 10362  9895  0  80   0 - 27036 -      pts/2    00:00:00 ps
+[tiradom@sp1:59]> !!
+ps -l
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1628  9895  9894  0  80   0 - 27595 sys_rt pts/2    00:00:00 csh
+0 R  1628 10366  9895  0  80   0 - 27036 -      pts/2    00:00:00 ps
+[tiradom@sp1:60]> history
+    22	17:25	cd csc60
+    23	17:26	mkdir lab2
+    24	17:26	cd lab2
+    26	17:27	mkdir xyz
+    30	17:28	pwd
+    31	17:29	ls > file1
+    32	17:29	cat file1
+    33	17:29	less file1
+    34	17:30	file *
+    35	17:30	wc file1
+    36	17:30	wc *
+    37	17:31	grep lab file1
+    38	17:32	cp file1 file2
+    41	17:33	cp ../file1
+    42	17:34	cp ../file1 .
+    44	17:35	mv file1 file2
+    46	17:35	mv ../file1 .
+    47	17:36	cd ..
+    49	17:36	cd xyz
+    51	17:37	cmp file1 file2
+    52	17:37	ls > xyzlist
+    53	17:38	cmp file1 xyzlist
+    54	17:38	diff file1 xyzlist
+    55	17:39	rm file1
+    56	17:39	ls
+    57	17:39	ps -u
+    59	17:40	ps -l
+    60	17:40	history
+[tiradom@sp1:61]> !3
+3: Event not found.
+[tiradom@sp1:61]> I[K!24
+cd lab2
+~/csc60/lab2 
+[tiradom@sp1:62]> cd ..
+[tiradom@sp1:63]> head lab1,[K.c
+head: cannot open `lab1.c' for reading: No such file or directory
+[tiradom@sp1:64]> head -209[K lab1.c
+head: cannot open `lab1.c' for reading: No such file or directory
+[tiradom@sp1:65]> v[Kcd lab1
+[tiradom@sp1:66]> head lab1.c
+/*-------------------------------------------------*/
+/* Miguel Tirado   */
+/* Section         */
+/* Lab 1           */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (void)
+{
+[tiradom@sp1:67]> tail lab1.c
+int main (void)
+{
+    printf("\nLab1\n\n");
+    printf("Hello World\n");
+    printf("Hi,Miguel Tirado \n\n");
+    printf("Every artist was first an amateur.\n");
+    printf("-Ralph Waldo Emerson\n\n");
+    return EXIT_SUCCESS;
+}
+/*----------------------------------------------*/    
+[tiradom@sp1:68]> ls -al | less
+[?1049h[?1h=total 24
+drwx--S--- 2 tiradom stdcpe 4096 Feb  3 15:32 ./
+drwx--S--- 4 tiradom stdcpe 4096 Feb 12 17:26 ../
+-rwx------ 1 tiradom stdcpe 4778 Feb  3 15:32 a.out*
+-rw------- 1 tiradom stdcpe  445 Feb  3 15:30 lab1.c
+-rw------- 1 tiradom stdcpe  796 Feb  3 15:32 MiguelTirado_lab1.txt
+[7m(END) [27m[K[K...skipping...
+
+                   [1mSUMMARY[0m [1mOF[0m [1mLESS[0m [1mCOMMANDS[0m
+
+      Commands marked with * may be preceded by a number, [4mN[24m.
+      Notes in parentheses indicate the behavior if [4mN[24m is given.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           [1mMOVING[0m
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or [4mN[24m lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or [4mN[24m lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or [4mN[24m lines).
+  b  ^B  ESC-v      *  Backward one window (or [4mN[24m lines).
+  z                 *  Forward  one window (and set window to [4mN[24m).
+  w                 *  Backward one window (and set window to [4mN[24m).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to [4mN[24m).
+  u  ^U             *  Backward one half-window (and set half-window to [4mN[24m).
+  ESC-)  RightArrow *  Left  one half screen width (or [4mN[24m positions).
+  ESC-(  LeftArrow  *  Right one half screen width (or [4mN[24m positions).
+  F                    Forward forever; like "tail -f".
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          [1mSEARCHING[0m
+
+  /[4mpattern[24m          *  Search forward for ([4mN[24m-th) matching line.
+  ?[4mpattern[24m          *  Search backward for ([4mN[24m-th) matching line.
+  n                 *  Repeat previous search (for [4mN[24m-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ESC-u                Undo (toggle) search highlighting.
+  &[4mpattern[24m          *  Display only matching lines
+        ---------------------------------------------------
+        Search patterns may be modified by one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+ ---------------------------------------------------------------------------
+
+                           [1mJUMPING[0m
+
+  g  <  ESC-<       *  Go to first line in file (or line [4mN[24m).
+  G  >  ESC->       *  Go to last line in file (or line [4mN[24m).
+  p  %              *  Go to beginning of file (or [4mN[24m percent into file).
+  t                 *  Go to the ([4mN[24m-th) next tag.
+  T                 *  Go to the ([4mN[24m-th) previous tag.
+  {  (  [           *  Find close bracket } ) ].
+  }  )  ]           *  Find open bracket { ( [.
+  ESC-^F [4m<c1>[24m [4m<c2>[24m  *  Find close bracket [4m<c2>[24m.
+  ESC-^B [4m<c1>[24m [4m<c2>[24m  *  Find open bracket [4m<c1>[24m 
+        ---------------------------------------------------
+        Each "find close bracket" command goes forward to the close bracket 
+          matching the ([4mN[24m-th) open bracket in the top line.
+        Each "find open bracket" command goes backward to the open bracket 
+          matching the ([4mN[24m-th) close bracket in the bottom line.
+[7mHELP -- Press RETURN for more, or q when done[27m[K[K
+  m[4m<letter>[24m            Mark the current position with <letter>.
+  '[4m<letter>[24m            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+        ---------------------------------------------------
+        A mark is any upper-case or lower-case letter.
+        Certain marks are predefined:
+             ^  means  beginning of the file
+             $  means  end of the file
+ ---------------------------------------------------------------------------
+
+                        [1mCHANGING[0m [1mFILES[0m
+
+  :e [[4mfile[24m]            Examine a new file.
+  ^X^V                 Same as :e.
+  :n                *  Examine the ([4mN[24m-th) next file from the command line.
+  :p                *  Examine the ([4mN[24m-th) previous file from the command line.
+  :x                *  Examine the first (or [4mN[24m-th) file from the command line.
+  :d                   Delete the current file from the command line list.
+  =  ^G  :f            Print current file name.
+ ---------------------------------------------------------------------------
+
+                    [1mMISCELLANEOUS[0m [1mCOMMANDS[0m
+
+  -[4m<flag>[24m              Toggle a command line option [see OPTIONS below].
+  --[4m<name>[24m             Toggle a command line option, by name.
+  _[4m<flag>[24m              Display the setting of a command line option.
+  __[4m<name>[24m             Display the setting of an option, by name.
+  +[4mcmd[24m                 Execute the less cmd each time a new file is examined.
+
+  ![4mcommand[24m             Execute the shell command with $SHELL.
+  |[1mX[0m[4mcommand[24m            Pipe file between current pos & mark [1mX[0m to shell command.
+  v                    Edit the current file with $VISUAL or $EDITOR.
+  V                    Print version number of "less".
+ ---------------------------------------------------------------------------
+
+                           [1mOPTIONS[0m
+
+        Most options may be changed either on the command line,
+        or from within less by using the - or -- command.
+        Options may be given in one of two forms: either a single
+        character preceded by a -, or a name preceeded by --.
+
+  -?  ........  --help
+                  Display help (from command line).
+  -a  ........  --search-skip-screen
+                  Forward search skips current screen.
+  -b [[4mN[24m]  ....  --buffers=[[4mN[24m]
+                  Number of buffers.
+  -B  ........  --auto-buffers
+                  Don't automatically allocate buffers for pipes.
+  -c  -C  ....  --clear-screen --CLEAR-SCREEN
+                  Repaint by clearing rather than scrolling.
+  -d  ........  --dumb
+                  Dumb terminal.
+  -D [[4mxn.n[24m]  .  --color=[4mxn.n[24m
+                  Set screen colors. (MS-DOS only)
+  -e  -E  ....  --quit-at-eof  --QUIT-AT-EOF
+                  Quit at end of file.
+  -f  ........  --force
+                  Force open non-regular files.
+  -F  ........  --quit-if-one-screen
+                  Quit if entire file fits on first screen.
+  -g  ........  --hilite-search
+                  Highlight only last match for searches.
+[7mHELP -- Press RETURN for more, or q when done[27m[K[K  -G  ........  --HILITE-SEARCH
+                  Don't highlight any matches for searches.
+  -h [[4mN[24m]  ....  --max-back-scroll=[[4mN[24m]
+                  Backward scroll limit.
+  -i  ........  --ignore-case
+                  Ignore case in searches that do not contain uppercase.
+  -I  ........  --IGNORE-CASE
+                  Ignore case in all searches.
+  -j [[4mN[24m]  ....  --jump-target=[[4mN[24m]
+                  Screen position of target lines.
+  -J  ........  --status-column
+                  Display a status column at left edge of screen.
+  -k [[4mfile[24m]  .  --lesskey-file=[[4mfile[24m]
+                  Use a lesskey file.
+  -L  ........  --no-lessopen
+                  Ignore the LESSOPEN environment variable.
+  -m  -M  ....  --long-prompt  --LONG-PROMPT
+                  Set prompt style.
+  -n  ........  --line-numbers
+                  Don't use line numbers.
+  -N  ........  --LINE-NUMBERS
+                  Use line numbers.
+  -o [[4mfile[24m]  .  --log-file=[[4mfile[24m]
+                  Copy to log file (standard input only).
+  -O [[4mfile[24m]  .  --LOG-FILE=[[4mfile[24m]
+                  Copy to log file (unconditionally overwrite).
+  -p [[4mpattern[24m]  --pattern=[[4mpattern[24m]
+                  Start at pattern (from command line).
+  -P [[4mprompt[24m]   --prompt=[[4mprompt[24m]
+                  Define new prompt.
+  -q  -Q  ....  --quiet  --QUIET  --silent --SILENT
+                  Quiet the terminal bell.
+  -r  -R  ....  --raw-control-chars  --RAW-CONTROL-CHARS
+                  Output "raw" control characters.
+  -s  ........  --squeeze-blank-lines
+                  Squeeze multiple blank lines.
+  -S  ........  --chop-long-lines
+                  Chop long lines.
+  -t [[4mtag[24m]  ..  --tag=[[4mtag[24m]
+                  Find a tag.
+  -T [[4mtagsfile[24m] --tag-file=[[4mtagsfile[24m]
+                  Use an alternate tags file.
+  -u  -U  ....  --underline-special  --UNDERLINE-SPECIAL
+                  Change handling of backspaces.
+  -V  ........  --version
+                  Display the version number of "less".
+  -w  ........  --hilite-unread
+                  Highlight first new line after forward-screen.
+  -W  ........  --HILITE-UNREAD
+                  Highlight first new line after any forward movement.
+  -x [[4mN[24m[,...]]  --tabs=[[4mN[24m[,...]]
+                  Set tab stops.
+  -X  ........  --no-init
+                  Don't use termcap init/deinit strings.
+                --no-keypad
+                  Don't use termcap keypad init/deinit strings.
+  -y [[4mN[24m]  ....  --max-forw-scroll=[[4mN[24m]
+                  Forward scroll limit.
+  -z [[4mN[24m]  ....  --window=[[4mN[24m]
+                  Set size of window.
+  -" [[4mc[24m[[4mc[24m]]  .  --quotes=[[4mc[24m[[4mc[24m]]
+                  Set shell quote characters.
+  -~  ........  --tilde
+                  Don't display tildes after end of file.
+  -# [[4mN[24m]  ....  --shift=[[4mN[24m]
+                  Horizontal scroll amount (0 = one half screen width)
+[7mHELP -- Press RETURN for more, or q when done[27m[K[K
+ ---------------------------------------------------------------------------
+
+                          [1mLINE[0m [1mEDITING[0m
+
+        These keys can be used to edit text being entered 
+        on the "command line" at the bottom of the screen.
+
+ RightArrow                       ESC-l     Move cursor right one character.
+ LeftArrow                        ESC-h     Move cursor left one character.
+ CNTL-RightArrow  ESC-RightArrow  ESC-w     Move cursor right one word.
+ CNTL-LeftArrow   ESC-LeftArrow   ESC-b     Move cursor left one word.
+ HOME                             ESC-0     Move cursor to start of line.
+ END                              ESC-$     Move cursor to end of line.
+ BACKSPACE                                  Delete char to left of cursor.
+ DELETE                           ESC-x     Delete char under cursor.
+ CNTL-BACKSPACE   ESC-BACKSPACE             Delete word to left of cursor.
+ CNTL-DELETE      ESC-DELETE      ESC-X     Delete word under cursor.
+ CNTL-U           ESC (MS-DOS only)         Delete entire line.
+ UpArrow                          ESC-k     Retrieve previous command line.
+ DownArrow                        ESC-j     Retrieve next command line.
+ TAB                                        Complete filename & cycle.
+ SHIFT-TAB                        ESC-TAB   Complete filename & reverse cycle.
+ CNTL-L                                     Complete filename, list all.
+
+
+[7mHELP -- END -- Press g to see it again, or q when done[27m[K...skipping...
+total 24
+drwx--S--- 2 tiradom stdcpe 4096 Feb  3 15:32 ./
+drwx--S--- 4 tiradom stdcpe 4096 Feb 12 17:26 ../
+-rwx------ 1 tiradom stdcpe 4778 Feb  3 15:32 a.out*
+-rw------- 1 tiradom stdcpe  445 Feb  3 15:30 lab1.c
+-rw------- 1 tiradom stdcpe  796 Feb  3 15:32 MiguelTirado_lab1.txt
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END) [27m[K[K[?1l>[?1049l[tiradom@sp1:69]> g[Khistory
+    22	17:25	cd csc60
+    23	17:26	mkdir lab2
+    26	17:27	mkdir xyz
+    30	17:28	pwd
+    31	17:29	ls > file1
+    32	17:29	cat file1
+    33	17:29	less file1
+    34	17:30	file *
+    35	17:30	wc file1
+    36	17:30	wc *
+    37	17:31	grep lab file1
+    38	17:32	cp file1 file2
+    41	17:33	cp ../file1
+    42	17:34	cp ../file1 .
+    44	17:35	mv file1 file2
+    46	17:35	mv ../file1 .
+    49	17:36	cd xyz
+    51	17:37	cmp file1 file2
+    52	17:37	ls > xyzlist
+    53	17:38	cmp file1 xyzlist
+    54	17:38	diff file1 xyzlist
+    55	17:39	rm file1
+    56	17:39	ls
+    57	17:39	ps -u
+    59	17:40	ps -l
+    61	17:42	cd lab2
+    62	17:42	cd ..
+    64	17:43	head -20 lab1.c
+    65	17:45	cd lab1
+    66	17:46	head lab1.c
+    67	17:46	tail lab1.c
+    68	17:47	ls -al | less
+    69	17:48	history
+[tiradom@sp1:70]> scho[K[K[K[Kecho $SHELL
+/bin/csh
+[tiradom@sp1:71]> ^Dexit
+
+Script done on Mon 12 Feb 2018 05:49:55 PM PST

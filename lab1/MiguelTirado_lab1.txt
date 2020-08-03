@@ -1,0 +1,35 @@
+Script started on Sat 03 Feb 2018 03:31:21 PM PST
+[tiradom@athena:21]> cat lab1.c
+/*-------------------------------------------------*/
+/* Miguel Tirado   */
+/* Section         */
+/* Lab 1           */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (void)
+{
+    printf("\nLab1\n\n");
+    printf("Hello World\n");
+    printf("Hi,Miguel Tirado \n\n");
+    printf("Every artist was first an amateur.\n");
+    printf("-Ralph Waldo Emerson\n\n");
+    return EXIT_SUCCESS;
+}
+/*----------------------------------------------*/    
+[tiradom@athena:22]> gcc lab1.c
+[tiradom@athena:23]> a.out
+
+Lab1
+
+Hello World
+Hi,Miguel Tirado 
+
+Every artist was first an amateur.
+-Ralph Waldo Emerson
+
+[tiradom@athena:24]> exit
+exit
+
+Script done on Sat 03 Feb 2018 03:32:36 PM PST
